@@ -36,8 +36,7 @@ class JsonController extends BaseController
                 $this->getPassword($request)
             );
 
-                    $result = ['status' => true, 'photo' =>$response->withJson($this->video->getJson())];
-                    echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            return $response->withJson($this->video->getJson());
         } else {
             return $response->withJson(['error' => 'You need to provide the url parameter'])
                 ->withStatus(StatusCode::HTTP_BAD_REQUEST);
