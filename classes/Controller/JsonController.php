@@ -36,7 +36,7 @@ class JsonController extends BaseController
                 $this->getPassword($request)
             );
 header('Content-type: application/json;');
-echo json_encode($response->withJson($this->video->getJson())
+return json_encode($response->withJson($this->video->getJson())
        , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
             } else {
