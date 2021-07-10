@@ -3,7 +3,7 @@
 /**
  * JsonController class.
  */
-header('Content-type: application/json;');
+
 namespace Alltube\Controller;
 
 use Alltube\Library\Exception\AlltubeLibraryException;
@@ -35,7 +35,7 @@ class JsonController extends BaseController
                 $this->getFormat($request),
                 $this->getPassword($request)
             );
-
+header('Content-type: application/json;');
             return $response->withJson($this->video->getJson());
         } else {
             return $response->withJson(['error' => 'You need to provide the url parameter'])
