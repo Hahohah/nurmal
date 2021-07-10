@@ -3,7 +3,7 @@
 /**
  * JsonController class.
  */
-
+header('Content-type: application/json;');
 namespace Alltube\Controller;
 
 use Alltube\Library\Exception\AlltubeLibraryException;
@@ -36,7 +36,8 @@ class JsonController extends BaseController
                 $this->getPassword($request)
             );
 
-            return $response->withJson($this->video->getJson());
+                    $result = ['status' => true, 'photo' =>$response->withJson($this->video->getJson())];
+                    echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } else {
             return $response->withJson(['error' => 'You need to provide the url parameter'])
                 ->withStatus(StatusCode::HTTP_BAD_REQUEST);
