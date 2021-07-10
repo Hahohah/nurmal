@@ -36,11 +36,12 @@ class JsonController extends BaseController
                 $this->getPassword($request)
             );
 header('Content-type: application/json;');
-            $info $response->withJson($this->video->getJson());
-        } else {
-            $info $response->withJson(['error' => 'You need to provide the url parameter'])
+echo json_encode($response->withJson($this->video->getJson())
+       , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+            } else {
+            return $response->withJson(['error' => 'You need to provide the url parameter'])
                 ->withStatus(StatusCode::HTTP_BAD_REQUEST);
-echo json_encode($info, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         }
     }
 }
